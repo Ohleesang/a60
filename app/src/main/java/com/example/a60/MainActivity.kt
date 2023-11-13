@@ -10,8 +10,16 @@ class MainActivity : AppCompatActivity() {
         class Solution {
             fun countDivisor(n : Int): Int{
                 var answer = 0
-                for(i in 1..n){
-                    if(n%i==0) answer++
+                var length = Math.sqrt(n.toDouble()).toInt()
+
+                for(i in 1..length){
+                    //제곱근을 이용하면 1~n 복잡도를 줄일수있다
+                    if(n%i==0) {
+                        answer++
+                        if(n/i != i){//추가로 구해지는 약수... 제곱근 전까지의 약수를 한번 나뉘어서 구한다
+                            answer++
+                        }
+                    }
                 }
                 return answer
             }
